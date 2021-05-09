@@ -1,14 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate } from 'react-query/hydration';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../layouts/theme/theme';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  const queryClientRef = React.useRef(null);
 
-  React.useEffect(() => {
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -24,13 +30,10 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClientRef.current}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </ThemeProvider>
     </React.Fragment>
   );
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
-};

@@ -13,7 +13,9 @@ export default function Table({ columns, data }): ReactElement {
     data,
   });
 
-  console.log(data);
+  if (data.length === 0) {
+    return null;
+  }
 
   return (
     <MaUTable {...getTableProps()}>
