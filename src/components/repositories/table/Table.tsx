@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import { Table as MaUTable, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
 import { Column, useTable, useSortBy } from 'react-table';
 import { MappedItem } from '../../../common/types/types';
@@ -13,9 +13,21 @@ export default function Table({ columns, data }: TableProps): ReactElement {
     {
       columns,
       data,
+      initialState: {
+        sortBy: [
+          {
+            id: 'owner',
+            desc: false,
+          },
+        ],
+      },
     },
     useSortBy,
   );
+
+  const handleOnClickHeader = useCallback((column) => {
+    console.log(column);
+  }, []);
 
   if (data.length === 0) {
     return null;
@@ -28,8 +40,10 @@ export default function Table({ columns, data }: TableProps): ReactElement {
           <TableRow {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <TableCell {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.render('Header')}
-                <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                <div onClick={() => handleOnClickHeader(column)}>
+                  {column.render('Header')}
+                  <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+                </div>
               </TableCell>
             ))}
           </TableRow>
