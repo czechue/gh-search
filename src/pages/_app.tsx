@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Hydrate } from 'react-query/hydration';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../layouts/theme/theme';
+import theme from '../common/theme/theme';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

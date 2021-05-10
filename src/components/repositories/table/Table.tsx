@@ -1,13 +1,14 @@
 import React, { ReactElement } from 'react';
 import { Table as MaUTable, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
-import { useTable } from 'react-table';
+import { Column, useTable } from 'react-table';
+import { MappedItem } from '../../../common/types/types';
 
-type Table = {
-  columnts: number;
-  data: any;
+type TableProps = {
+  columns: Column[];
+  data: MappedItem[];
 };
 
-export default function Table({ columns, data }): ReactElement {
+export default function Table({ columns, data }: TableProps): ReactElement {
   const { getTableProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data,
