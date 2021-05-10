@@ -7,12 +7,16 @@ const PUBLIC_API_URL = 'https://api.github.com/search/repositories';
 
 type GetRepositoriesProps = {
   query: string;
+  page: string;
 };
 
 export default async function getRepositories({
   query,
+  page,
 }: GetRepositoriesProps): Promise<MappedRepositories> {
-  const response = await fetch(PUBLIC_API_URL + `?q=${query}&page=0&per_page=${PER_PAGE_RESULTS}`);
+  const response = await fetch(
+    PUBLIC_API_URL + `?q=${query}&page=${page}&per_page=${PER_PAGE_RESULTS}`,
+  );
 
   // a bit simplified fetch error handling
   if (!response.ok) {

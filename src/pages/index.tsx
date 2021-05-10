@@ -1,29 +1,30 @@
 import React from 'react';
+
+// components
 import Repositories from '../components/repositories/Repositories';
 import Main from '../layouts/Main';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from '../components/pagination/Pagination';
+
+// hooks
 import useRepositories from '../common/api/useRepositories';
 
 export default function Index({ query }) {
   const { data, isError, isLoading } = useRepositories({ query });
 
-  const handleOnClick = (e, page) => {
-    console.log({ page, e });
-  };
+  if (isError) {
+    return <Main>Error</Main>;
+  }
 
-  if (!data) {
+  if (!data || isLoading) {
     return <Main>Loading</Main>;
   }
 
   return (
     <Main>
-      {isLoading && <div>Loading</div>}
-      {isError && <div>Error</div>}
       {data.items.length > 0 ? (
         <>
-          {data.total_count}
           <Repositories results={data.items} />
-          <Pagination count={10} onChange={handleOnClick} />
+          <Pagination totalCount={data.total_count} size="large" />
         </>
       ) : (
         <div>No results</div>
