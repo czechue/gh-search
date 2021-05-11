@@ -1,23 +1,36 @@
+import type { ParsedUrlQuery } from 'querystring';
+
+import type { GetServerSideProps } from 'next';
 import React from 'react';
 
-// components
+import useRepositories from '../common/api/useRepositories';
+import Pagination from '../components/pagination/Pagination';
 import Repositories from '../components/repositories/Repositories';
 import Main from '../layouts/Main';
-import Pagination from '../components/pagination/Pagination';
 
-// hooks
-import useRepositories from '../common/api/useRepositories';
+type IndexProps = {
+  readonly query: ParsedUrlQuery;
+}
 
-export default function Index({ query }) {
+export default function Index({ query }: IndexProps) {
   const { data, isError, isLoading } = useRepositories({ query });
+
+  if (!query['q']) {
+    return <Main>Use search to find repository</Main>
+  }
+
+  if (isLoading) {
+    return <Main>Loading data</Main>;
+  }
+
+  if (!data) {
+    return <Main>No results</Main>;
+  }
 
   if (isError) {
     return <Main>Error</Main>;
   }
 
-  if (!data || isLoading) {
-    return <Main>Loading</Main>;
-  }
 
   return (
     <Main>
@@ -33,7 +46,8 @@ export default function Index({ query }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
+// eslint-disable-next-line @typescript-eslint/require-await,require-await
+export const getServerSideProps: GetServerSideProps = async ({ query = {} }) => {
   return {
     props: {
       query,

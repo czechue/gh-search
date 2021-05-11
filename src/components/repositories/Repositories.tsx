@@ -1,7 +1,11 @@
-import React, { ReactElement } from 'react';
+/* eslint-disable functional/prefer-readonly-type */
 import { CssBaseline } from '@material-ui/core';
+import type { ReactElement } from 'react';
+import React from 'react';
+
+import type { MappedItem } from '../../common/types/types';
+
 import Table from './table/Table';
-import { MappedItem } from '../../common/types/types';
 
 type RepositoriesProps = {
   results: MappedItem[];

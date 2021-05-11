@@ -1,4 +1,4 @@
-import { MappedRepositories, RawRepositories } from './types/types';
+import type { MappedRepositories, RawRepositories } from './types/types';
 
 export default function repositoriesMapper(res: RawRepositories): MappedRepositories {
   return {

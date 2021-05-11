@@ -27,7 +27,6 @@
     "react/jsx-curly-brace-presence": ["error", "never"],
     "jsx-a11y/anchor-is-valid": "off",
     "import/no-anonymous-default-export": "error",
-    "import/no-default-export": "error",
     "import/dynamic-import-chunkname": "error",
     "import/order": ["error", { "newlines-between": "always", "alphabetize": { "order": "asc" } }],
     "import/no-duplicates": "error",

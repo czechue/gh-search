@@ -1,10 +1,14 @@
-import React, { ReactElement, useCallback } from 'react';
+/* eslint-disable functional/prefer-readonly-type */
 import { Table as MaUTable, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
-import { Column, useTable, useSortBy } from 'react-table';
-import { MappedItem } from '../../../common/types/types';
+import type { ReactElement } from 'react';
+import React, { useCallback } from 'react';
+import type { Column } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
+
+import type { MappedItem } from '../../../common/types/types';
 
 type TableProps = {
-  columns: Column[];
+  columns: Column<object>[];
   data: MappedItem[];
 };
 

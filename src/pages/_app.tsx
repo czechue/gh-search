@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Head from 'next/head';
+import React, { useEffect } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import theme from '../common/theme/theme';
 
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
-  const queryClientRef = React.useRef(null);
+export default function MyApp({ Component, pageProps }) {
+  const queryClientRef = React.useRef<QueryClient>(null);
 
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();

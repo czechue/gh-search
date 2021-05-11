@@ -1,8 +1,9 @@
-import React, { useState, FormEventHandler, ChangeEventHandler } from 'react';
-import { useRouter } from 'next/router';
+import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
+import { useRouter } from 'next/router';
+import type { FormEventHandler, ChangeEventHandler } from 'react';
+import React, { useState } from 'react';
 
 export default function Search() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function Search() {
       return;
     }
 
-    router.push({
+    void router.push({
       query: { q: phrase },
     });
   };
@@ -34,7 +35,7 @@ export default function Search() {
         <form noValidate autoComplete="off" onSubmit={handleOnSubmit}>
           <TextField
             onChange={handleOnChange}
-            value={phrase}
+            defaultValue={router.query['q'] || ''}
             id="search"
             label="Search"
             variant="outlined"
