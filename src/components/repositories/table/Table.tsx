@@ -1,11 +1,14 @@
 /* eslint-disable functional/prefer-readonly-type */
 import { Table as MaUTable, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import { useRouter } from 'next/router';
 import type { ReactElement } from 'react';
-import React, { useCallback } from 'react';
+import React, { useMemo } from 'react';
 import type { Column } from 'react-table';
 import { useTable, useSortBy } from 'react-table';
 
 import type { MappedItem } from '../../../common/types/types';
+
+import { useSortColumn } from './useSortColumn';
 
 type TableProps = {
   columns: Column<object>[];
@@ -13,25 +16,28 @@ type TableProps = {
 };
 
 export default function Table({ columns, data }: TableProps): ReactElement {
+  const router = useRouter();
+  const {handleOnClickHeader} = useSortColumn()
+  const getInitialState = useMemo(
+    () => ({
+      sortBy: [
+        {
+          id: router.query['sort'] as string,
+          desc: router.query['desc'] === 'true',
+        },
+      ],
+    }),
+    [router],
+  );
+
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
-      initialState: {
-        sortBy: [
-          {
-            id: 'owner',
-            desc: false,
-          },
-        ],
-      },
+      initialState: getInitialState,
     },
     useSortBy,
   );
-
-  const handleOnClickHeader = useCallback((column) => {
-    console.log(column);
-  }, []);
 
   if (data.length === 0) {
     return null;
@@ -44,7 +50,12 @@ export default function Table({ columns, data }: TableProps): ReactElement {
           <TableRow {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <TableCell {...column.getHeaderProps(column.getSortByToggleProps())}>
-                <div onClick={() => handleOnClickHeader(column)}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => handleOnClickHeader(column)}
+                  onKeyDown={() => handleOnClickHeader(column)}
+                >
                   {column.render('Header')}
                   <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                 </div>

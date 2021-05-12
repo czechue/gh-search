@@ -25,5 +25,5 @@ export function usePagination({totalCount}: UsePagination) {
     defaultPage,
     possibleToDisplayMaxPages,
     handleOnClick
-  }), [defaultPage, possibleToDisplayMaxPages])
+  }), [defaultPage, handleOnClick, possibleToDisplayMaxPages])
 }

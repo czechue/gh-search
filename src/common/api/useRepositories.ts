@@ -10,7 +10,7 @@ type UseRepositories = {
 
 export default function useRepositories({ query }: UseRepositories) {
   return useQuery(
-    ['repos', { query }],
+    ['repos', { query: query['q'], p: query['p'] }],
     () =>
       getRepositories({
         query: query['q'] as string,
