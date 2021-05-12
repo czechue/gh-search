@@ -120,7 +120,7 @@ export interface MappedItem {
   readonly name: string;
   readonly owner: string;
   readonly stars: number;
-  readonly created_at: Date;
+  readonly created_at: string;
 }
 
 export interface MappedRepositories {

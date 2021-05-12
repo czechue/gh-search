@@ -5,7 +5,7 @@ import React from 'react';
 
 import useRepositories from '../common/api/useRepositories';
 import Pagination from '../components/pagination/Pagination';
-import Repositories from '../components/repositories/Repositories';
+import Table from '../components/table/Table';
 import Main from '../layouts/Main';
 
 type IndexProps = {
@@ -35,10 +35,10 @@ export default function Index({ query }: IndexProps) {
   return (
     <Main>
       {data.items.length > 0 ? (
-        <>
-          <Repositories results={data.items} />
-          <Pagination totalCount={data.total_count} size="large" />
-        </>
+        <React.Fragment>
+          <Table results={data.items} />
+          <Pagination totalCount={data.total_count} />
+        </React.Fragment>
       ) : (
         <div>No results</div>
       )}

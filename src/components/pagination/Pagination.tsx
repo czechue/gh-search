@@ -7,7 +7,7 @@ import { usePagination } from './usePagination';
 
 type PaginationProps = {
   readonly totalCount: number;
-  readonly size: 'small' | 'large';
+  readonly size?: 'small' | 'large';
 };
 
 export default function Pagination({ totalCount, size = 'small' }: PaginationProps): ReactElement {

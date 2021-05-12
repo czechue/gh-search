@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring';
-
 import { PER_PAGE_RESULTS } from '../consts/consts';
 import repositoriesMapper from '../repositoriesMapper';
 import type { MappedRepositories, RawRepositories } from '../types/types';

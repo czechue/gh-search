@@ -1,4 +1,5 @@
 import type { MappedRepositories, RawRepositories } from './types/types';
+import getDate from './utils/getDate';
 
 export default function repositoriesMapper(res: RawRepositories): MappedRepositories {
   return {
@@ -9,7 +10,7 @@ export default function repositoriesMapper(res: RawRepositories): MappedReposito
         name: item.name,
         owner: item.owner.login,
         stars: item.stargazers_count,
-        created_at: item.created_at,
+        created_at: getDate(item.created_at),
       };
     }),
   };
