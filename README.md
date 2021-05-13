@@ -1,3 +1,16 @@
+## Notes
+-[x] Search input 
+-[x] Results table with sortable columns: Name, Owner, Stars and Created at,
+-[x] Pagination,
+-[x] Nice and clean interface, including loading and error states.
+-[x] Caching the search results,
+-[x] Being able to see the exact same results for a given URL with search params,
+-[x] Separating business and visual code,
+-[x] Testing your code (preferably Jest, Cypress),
+-[x] Type interfaces,
+-[x] Useful git branch history,
+-[ ] Anything else you think might be useful here.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
