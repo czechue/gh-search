@@ -10,7 +10,6 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head >
           <meta name="theme-color" content={theme.palette.primary.main} />
-          <title>React repositories</title>
         </Head>
         <body>
           <Main />

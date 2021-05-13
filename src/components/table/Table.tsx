@@ -54,7 +54,7 @@ export default function Table({ results: data }: TableProps): ReactElement {
                     onClick={() => handleOnClickHeader(column)}
                     onKeyDown={() => handleOnClickHeader(column)}
                   >
-                    {column.render('Header')}
+                    <strong>{column.render('Header')}</strong>
                     <span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
                   </div>
                 </TableCell>

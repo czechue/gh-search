@@ -5,7 +5,7 @@
     "sourceType": "module",
     "project": "tsconfig.json"
   },
-  "ignorePatterns": "next.config.js",
+  "ignorePatterns": ["next.config.js", "jest.config.js"],
   "plugins": ["functional", "@typescript-eslint", "jsx-a11y", "css-modules"],
   "extends": [
     "prettier",

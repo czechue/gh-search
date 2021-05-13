@@ -1,6 +1,6 @@
 import { PER_PAGE_RESULTS } from '../consts/consts';
-import repositoriesMapper from '../repositoriesMapper';
 import type { MappedRepositories, RawRepositories } from '../types/types';
+import repositoriesMapper from '../utils/propsMappers/repositoriesMapper';
 
 // api's domain should be get from ENVs:
 const PUBLIC_API_URL = 'https://api.github.com/search/repositories';

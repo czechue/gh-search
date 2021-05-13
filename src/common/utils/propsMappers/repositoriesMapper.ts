@@ -1,5 +1,5 @@
-import type { MappedRepositories, RawRepositories } from './types/types';
-import getDate from './utils/getDate';
+import type { MappedRepositories, RawRepositories } from '../../types/types';
+import getDate from '../getDate/getDate';
 
 export default function repositoriesMapper(res: RawRepositories): MappedRepositories {
   return {
