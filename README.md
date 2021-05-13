@@ -1,3 +1,23 @@
+## Notes 
+### Done
+-[x] Search input 
+-[x] Results table with sortable columns: Name, Owner, Stars and Created at,
+-[x] Pagination,
+-[x] Nice and clean interface, including loading and error states.
+-[x] Caching the search results,
+-[x] Being able to see the exact same results for a given URL with search params,
+-[x] Separating business and visual code,
+-[x] Testing your code (preferably Jest, Cypress),
+-[x] Type interfaces,
+-[x] Useful git branch history,
+-[ ] Anything else you think might be useful here:
+
+### To consider
+-[ ] it would be quite simple to add server side rendering in this setup
+-[ ] few more tests should be written to cover the business logic (either in Cypress or in React Testing Library)
+-[ ] if the project were to be larger a state manager could be considered (redux, mobx, xstate)
+-[ ] 2 libraries were added: react-query for caching, and react-table to support sorting, these libraries together weigh about 100kb, we should consider the sense of their use and do we really need them in our production app
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
