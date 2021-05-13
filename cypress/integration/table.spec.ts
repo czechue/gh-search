@@ -43,7 +43,7 @@ context('Table', () => {
       cy.get('input').should('have.value', 'foo123');
     });
 
-    it('should render correct active page', () => {
+    it('should render correct active page selected', () => {
       cy.visit('http://localhost:3000?q=foo123&p=5');
       cy.wait('@getRepos');
 
